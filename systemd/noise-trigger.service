@@ -1,0 +1,15 @@
+[Unit]
+Description=Noise-activated speaker
+After=sound.target
+
+[Service]
+Type=simple
+User=__USER__
+WorkingDirectory=__DIR__
+ExecStart=__DIR__/.venv/bin/python __DIR__/noise_trigger.py
+Restart=always
+RestartSec=5
+SupplementaryGroups=audio
+
+[Install]
+WantedBy=multi-user.target

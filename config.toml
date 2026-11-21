@@ -1,0 +1,26 @@
+[audio]
+# Substring of mic name from `--list-devices`, or "" for system default.
+input_device = "USB"
+# ALSA device for aplay (`aplay -l`), e.g. "plughw:1,0"; "" = default.
+output_device = ""
+sample_rate = 16000
+# WAV files, relative to this config. Multiple = random pick (less habituation).
+clips = ["clips/lay_down.wav"]
+
+[detection]
+# Run `--calibrate`, note room-quiet and bark levels, set between them.
+threshold_db = -30.0
+block_ms = 100
+# Fire when min_loud_blocks of the last window_blocks are loud (3 of 5 = ~300ms of noise).
+window_blocks = 5
+min_loud_blocks = 3
+# Seconds before another play is allowed.
+cooldown_s = 20
+max_plays_per_hour = 12
+# Extra mic-off time after clip ends (room echo/tail).
+post_play_ignore_s = 1.5
+
+[schedule]
+# 24h local time. Crossing midnight is fine. start == end -> always on.
+start = "22:00"
+end = "06:30"
